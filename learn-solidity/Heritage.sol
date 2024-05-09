@@ -4,8 +4,10 @@ pragma solidity >=0.4.22 <0.9.0;
 
 contract Heritage {
     mapping(string => uint) incomingValue;
+    address public owner = msg.sender;
 
     function writeValues(string memory _name, uint value) public {
+        require(msg.sender == owner);
         incomingValue[_name] = value;        
     }
 
